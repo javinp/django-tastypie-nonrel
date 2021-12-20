@@ -1,7 +1,7 @@
 from django.conf.urls.defaults import patterns, include, url
 
 from tastypie.api import Api
-from test_app.api.resources import (
+from .test_app.api.resources import (
     ListFieldTestResource,
     DictFieldTestResource,
     EmbeddedModelFieldTestResource,

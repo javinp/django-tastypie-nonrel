@@ -6,7 +6,7 @@ from tastypie.http import *
 from tastypie.utils import trailing_slash, dict_strip_unicode_keys
 from tastypie.exceptions import ImmediateHttpResponse, NotFound
 from tastypie.bundle import Bundle
-from fields import EmbeddedCollection
+from .fields import EmbeddedCollection
 
 class MongoResource(ModelResource):
     """Minor enhancements to the stock ModelResource to allow subresources."""
@@ -20,7 +20,7 @@ class MongoResource(ModelResource):
     def base_urls(self):
         base = super(MongoResource, self).base_urls()
 
-        embedded = ((name, obj) for name, obj in self.fields.items() if isinstance(obj, EmbeddedCollection))
+        embedded = ((name, obj) for name, obj in list(self.fields.items()) if isinstance(obj, EmbeddedCollection))
 
         embedded_urls = []
 
